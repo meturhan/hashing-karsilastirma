@@ -26,10 +26,10 @@ hashing-karsilastirma/
 
 ```mermaid
 flowchart TD
-    A[Input: Number to insert/search] --> B[Compute H1 = key % table_size]
+    A["Input: Number to insert/search"] --> B["Compute H1 = key % table_size"]
     
     subgraph LISCH[LISCH - Linked List Chaining]
-        C{tablo[H] empty?}
+        C{"tablo[H] empty?"}
         C -->|Yes| D[Store directly]
         C -->|No| E[Follow link chain]
         E --> F1[Find last link or empty slot]
@@ -38,21 +38,21 @@ flowchart TD
     end
     
     subgraph PO[Progressive Overflow - Linear Probing]
-        G{tablo[H] empty?}
+        G{"tablo[H] empty?"}
         G -->|Yes| H[Store directly]
-        G -->|No| I1[H+1, H+2, H+3...]
+        G -->|No| I1["H+1, H+2, H+3..."]
         I1 ~~~ I2[Linear probe forward]
         I2 --> J[Find first empty slot]
         J --> H
     end
     
     subgraph LQ[Linear Quotient - Double Hashing]
-        K{tablo[H] empty?}
+        K{"tablo[H] empty?"}
         K -->|Yes| L[Store directly]
-        K -->|No| M1[H+adr, H+2adr, H+3adr...]
-        M1 ~~~ M2[where adr = key / table_size]
+        K -->|No| M1["H+adr, H+2adr, H+3adr..."]
+        M1 ~~~ M2["where adr = key / table_size"]
         M2 --> N1[Find first empty slot]
-        N1 ~~~ N2[with step = adr]
+        N1 ~~~ N2["with step = adr"]
         N2 --> L
     end
     
